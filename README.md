@@ -335,3 +335,58 @@ CodeGrade will use the same test suite as the test suite included.
 
 Once all tests are passing, commit and push your work using `git` to submit to CodeGrade through Canvas.
 
+# Flask SQLAlchemy Foundations Lab — Earthquake Data API
+## 1. Earthquake Model
+`Earthquake` model with the following fields:
+- `id`  
+- `magnitude`  
+- `location`  
+- `year`  
+
+A `__repr__` method was added to make objects readable when printed in the shell.
+
+---
+
+## 2. Database Migrations
+flask db init
+flask db migrate -m “initial migration”
+flask db upgrade head
+
+This created the `earthquakes` table inside `app.db`.
+
+---
+
+## 3. Seed Data
+Command:
+python seed.py
+---
+
+## 4. API Routes
+
+### ✔️ GET /earthquakes/<id>  
+Returns an earthquake by its ID.  
+If the ID does not exist, a 404 JSON error message is returned.
+
+### ✔️ GET /earthquakes/magnitude/<value>  
+Returns all earthquakes with magnitude greater than or equal to the given value.  
+The response includes the count and a list of matching earthquakes.
+
+---
+
+## 5. Testing
+
+All tests for the model and API routes passed successfully.
+
+### Screenshot of tests:
+
+![All tests passing](screenshot.png)
+
+---
+
+## How to Run the Application
+pipenv install
+pipenv shell
+cd server
+export FLASK_APP=app.py
+export FLASK_RUN_PORT=5555
+flask run
